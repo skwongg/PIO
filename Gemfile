@@ -15,6 +15,8 @@ gem 'activesupport'
 gem 'activerecord'
 
 gem 'rake'
+gem 'yelp'
+gem 'dotenv'
 
 gem 'shotgun'
 

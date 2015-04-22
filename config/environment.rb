@@ -7,13 +7,15 @@ require 'bundler/setup' if File.exists?(ENV['BUNDLE_GEMFILE'])
 
 # Require gems we care about
 require 'rubygems'
-
+require 'yelp'
 require 'uri'
 require 'pathname'
 
 require 'pg'
 require 'active_record'
 require 'logger'
+require 'dotenv'
+Dotenv.load
 
 require 'sinatra'
 require "sinatra/reloader" if development?
@@ -45,3 +47,11 @@ Dir[APP_ROOT.join('app', 'helpers', '*.rb')].each { |file| require file }
 
 # Set up the database and models
 require APP_ROOT.join('config', 'database')
+
+
+Yelp.client.configure do |config|
+  config.consumer_key = ENV["CONSUMER_KEY"]
+  config.consumer_secret = ENV["CONSUMER_SECRET"]
+  config.token = ENV["TOKEN"]
+  config.token_secret = ENV["TOKEN_SECRET"]
+end
