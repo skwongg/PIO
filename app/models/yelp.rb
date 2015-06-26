@@ -1,7 +1,6 @@
 require 'yelp'
 
 
-
 class Yelpa
   attr_accessor :client
 
